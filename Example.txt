@@ -1,0 +1,14 @@
+const pay = require("paynow_integration");
+
+async function makePayment(){
+    let result = await pay("0770000000","Transaction_Reference",1.0,"test@gmail.com");
+    console.log(result);
+}
+
+makePayment();
+
+Result Scenarios:
+
+- Paid = Transaction paid successfully
+- Cancelled = Transaction cancelled / Incorrect PIN
+- Timed Out = Transaction took long to be paid (NB - Timeout is 20seconds)

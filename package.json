@@ -1,0 +1,26 @@
+{
+  "name": "express-pay",
+  "version": "1.0.0",
+  "description": "Node Package To Simplify Express Payments Via Ecocash",
+  "main": "express_pay.js",
+  "bin": "express_pay.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luke-Tembani/Express-Pay.git"
+  },
+  "keywords": [
+    "Express",
+    "Pay",
+    "Ecocash",
+    "Zimbabwe"
+  ],
+  "author": "Luke Tembani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Luke-Tembani/Express-Pay/issues"
+  },
+  "homepage": "https://github.com/Luke-Tembani/Express-Pay#readme"
+}
