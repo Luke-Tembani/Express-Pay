@@ -1,4 +1,3 @@
-# Express-Pay
 Hello Everyone👋,
 
 I am pleased to introduce you to the Paynow Integration Package. This package is a part of "PAYNOW" and aims to simplify the process of implementing EXPRESS CHECKOUT PAYMENTS using ECOCASH.
