@@ -1,5 +1,7 @@
 const {Paynow} = require("paynow");
 require("dotenv").config();
+const axios = require("axios");
+
 
 const ID = process.env.PAYNOW_INTEGRATION_ID;
 const KEY = process.env.PAYNOW_INTEGRATION_KEY;
@@ -9,12 +11,14 @@ module.exports = function Pay(Payee_Contact, Transaction_Reference,Transaction_A
 
   const payment = paynow.createPayment(`${Transaction_Reference}`, `${Customer_Email}`);
   payment.add(`${Product_Name}`, `${Transaction_Amount}`);
-  const maxTimeout = 20000; 
+  const maxTimeout = 30000; 
 
   return paynow.sendMobile(payment, `${Payee_Contact}`, "ecocash")
     .then(async function (response) {
       let initStatus = "Sent";
       const startTime = Date.now();
+
+      console.log("url",response.pollUrl);
 
       return new Promise((resolve, reject) => {
         
@@ -30,6 +34,8 @@ module.exports = function Pay(Payee_Contact, Transaction_Reference,Transaction_A
                 resolve("Paid");
               } else if (result === "Cancelled") {
                 resolve("Cancelled");
+              }else if(result==="Sent"){
+                resolve("Not Authorised");
               } else {
                 resolve("Transaction failed")
               }
@@ -46,21 +52,52 @@ module.exports = function Pay(Payee_Contact, Transaction_Reference,Transaction_A
     });
 }
 
-async function getTransactionStatus(response){    
-  let requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-   try {
-      const response_1 = await fetch(`${response.pollUrl}`, requestOptions);
-      const result_1 = await response_1.text();
-      const resbody = `${result_1}`;
-      const start = resbody.indexOf('status=') + 'status='.length;
-      const end = resbody.indexOf('&', start);
-      const status = resbody.substring(start, end);
-      return status;
-  } catch (error) {
-      return console.log('error', error);
-  }
+//Deprecated Method
+// async function getTransactionStatus(response){    
+//   let requestOptions = {
+//       method: 'GET',
+//       redirect: 'follow'
+//     };
+//    try {
+//       const response_1 = await fetch(`${response.pollUrl}`, requestOptions);
+//       const result_1 = await response_1.text();
+//       const resbody = `${result_1}`;
+//       const start = resbody.indexOf('status=') + 'status='.length;
+//       const end = resbody.indexOf('&', start);
+//       const status = resbody.substring(start, end);
+//       return status;
 
+//   } catch (error) {
+//       return console.log('error', error);
+//   }
+
+// }
+
+async function getTransactionStatus(response){  
+  
+
+  try {
+
+   
+    
+
+    const response_1 = await axios.get(`${response.pollUrl}`);
+   
+    const resbody = response_1.data;
+
+
+    const start = resbody.indexOf('status=') + 'status='.length;
+
+
+    const end = resbody.indexOf('&', start);
+    
+
+    const status = resbody.substring(start, end);
+
+    
+
+    return status;
+  } catch (error) {
+    return console.log('error', error);
+  }
 }
