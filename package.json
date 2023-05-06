@@ -1,6 +1,6 @@
 {
   "name": "express-pay",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Node Package To Simplify Express Payments Via Ecocash",
   "main": "express_pay.js",
   "bin": "express_pay.js",

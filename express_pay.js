@@ -18,8 +18,6 @@ module.exports = function Pay(Payee_Contact, Transaction_Reference,Transaction_A
       let initStatus = "Sent";
       const startTime = Date.now();
 
-      console.log("url",response.pollUrl);
-
       return new Promise((resolve, reject) => {
         
         const intervalId = setInterval(async () => {
@@ -51,27 +49,6 @@ module.exports = function Pay(Payee_Contact, Transaction_Reference,Transaction_A
       });
     });
 }
-
-//Deprecated Method
-// async function getTransactionStatus(response){    
-//   let requestOptions = {
-//       method: 'GET',
-//       redirect: 'follow'
-//     };
-//    try {
-//       const response_1 = await fetch(`${response.pollUrl}`, requestOptions);
-//       const result_1 = await response_1.text();
-//       const resbody = `${result_1}`;
-//       const start = resbody.indexOf('status=') + 'status='.length;
-//       const end = resbody.indexOf('&', start);
-//       const status = resbody.substring(start, end);
-//       return status;
-
-//   } catch (error) {
-//       return console.log('error', error);
-//   }
-
-// }
 
 async function getTransactionStatus(response){  
   
