@@ -10,6 +10,10 @@ To set up the package, you simply need to run "npm i paynow_integration" and con
 
 - USAGE EXAMPLE
 
+.env VARIABLE NAMES
+PAYNOW_INTEGRATION_KEY=
+PAYNOW_INTEGRATION_ID=
+
 const pay = require("paynow_integration");
 
 REQUIRED ARGUMENTS
