@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/Luke-Tembani/Express-Pay#readme",
   "dependencies": {
-    "axios": "^1.4.0",
-    "dotenv": "^16.0.3",
-    "paynow": "^1.0.9"
+    "axios": "^1.16.0",
+    "dotenv": "^17.4.2",
+    "paynow": "^2.2.2"
   }
 }

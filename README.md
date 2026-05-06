@@ -11,9 +11,9 @@ To set up the package, you simply need to run "npm i express-pay" and configure 
 - USAGE EXAMPLE
 
 .env VARIABLE NAMES
-PAYNOW_INTEGRATION_KEY=
-PAYNOW_INTEGRATION_ID=
-RESULT_URL=
+- PAYNOW_INTEGRATION_KEY=
+- PAYNOW_INTEGRATION_ID=
+- RESULT_URL=
 
 const pay = require("express-pay");
 
